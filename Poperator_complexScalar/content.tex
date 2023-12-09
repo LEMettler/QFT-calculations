@@ -1,0 +1,209 @@
+\section*{Exercise 3}
+
+\greenbox{Momentum operator}{
+Show that the normal ordered 4-momentum operator $P_\mu$ can be written as
+$$
+P_{\mu}=\int\mathrm{d}^{3}x:T^{0}{}_{\mu}:=\int\mathrm{d}\tilde{k}\,k_{\mu}\left[a^{\dagger}(\vec{k})\,a(\vec{k})+b^{\dagger}(\vec{k})\,b(\vec{k})\right]\,\,, 
+$$
+in terms of creation and annihilation operators.
+}
+
+We inspect the complex scalar field Lagrangian
+\begin{equation}
+    {\mathcal{L}}=(\partial_{\mu}\phi^{\dagger})(\partial^{\mu}\phi)-m^{2}\phi^{\dagger}\phi
+\end{equation}
+
+
+with the derivatives
+\begin{equation}
+    \frac{\partial{\mathcal{L}}}{\partial(\partial_{\mu}\phi)} = \partial^\mu \phi^\dagger \quad \text{and} \quad \frac{\partial{\mathcal{L}}}{\partial(\partial_{\mu}\phi^\dagger)} = \partial^\mu \phi.
+\end{equation}
+
+The fields can be expressed as
+\begin{align}
+    \phi(x)=\displaystyle\int d\tilde{k}\,\left[a(\vec{k})e^{-i k x}+b^{\dagger}(\vec{k})e^{i k x}\right] \quad \text{and} \quad 
+    \phi^{\dagger}(x)=\displaystyle\int d\tilde{p}\,\left[b(\vec{p})e^{-i p x}+a^{\dagger}(\vec{p})e^{i p x}\right]
+\end{align} 
+
+and we get the time derivatives
+
+\begin{align}
+    \Pi^\dagger = \partial^0 \phi(x)=\int d\tilde{k}\, (i k^0) \left[-a(\vec{k})e^{-i k x}+b^{\dagger}(\vec{k})e^{i k x}\right] \quad \text{and} \quad
+    \Pi = \partial^0 \phi^{\dagger}(x)=\int d\tilde{p}\, (i p^0) \left[-b(\vec{p})e^{-i p x}+a^{\dagger}(\vec{p})e^{i p x}\right]
+\end{align} 
+as well as the spacial derivatives
+
+\begin{align}
+    \partial_j \phi(x)=\int d\tilde{k}\, (i k^j) \left[-a(\vec{k})e^{-i k x}+b^{\dagger}(\vec{k})e^{i k x}\right] \quad \text{and} \quad
+    \partial_j \phi^{\dagger}(x)=\int d\tilde{p}\, (i p^j) \left[-b(\vec{p})e^{-i p x}+a^{\dagger}(\vec{p})e^{i p x}\right]
+\end{align} 
+
+because $e^{ikx} = e^{ik^0 x_0 - i \vec{k}\vec{x}}$.
+
+
+
+\subsection*{Energy-Momentum-Tensor}
+For a complex field we have
+\begin{equation}
+    T^{\mu \nu} = \frac{\partial{\mathcal{L}}}{\partial(\partial_{\mu}\phi)}\partial^{\nu}\phi+\frac{\partial{\mathcal{L}}}{\partial(\partial_{\mu}\phi^{\dagger})}\partial^{\nu}\phi^{\dagger}-g^{\mu\nu}{\mathcal{L}}
+\end{equation}
+which results in 
+\begin{align}
+    {T^0}_\mu = g_{\mu \lambda} T^{0 \lambda}
+              =  \Pi \left( \partial_{\mu}\phi \right)  + \Pi^\dagger \left( \partial_{\mu}\phi^\dagger \right) - {g^0}_\mu \mathcal{L}.
+\end{align}
+(Because of the metric tensor) we separate the cases
+\begin{equation}
+    {T^0}_0 = \Pi \left( \partial_{0}\phi \right)  + \Pi \left( \partial_{0}\phi^\dagger \right) - \mathcal{L}\\
+\end{equation}
+(we don't express the other derivative as $\Pi$ because of the lower indices) and 
+\begin{equation}
+    {T^0}_j = \Pi^\dagger \left( \partial_{j}\phi \right)  + \Pi \left( \partial_{j}\phi^\dagger \right).
+\end{equation}
+
+\subsection*{Space components}
+\newcommand{\spacc}{\hphantom{\int \text{d}^3x \int d\tilde{k} \int d\tilde{k} :}}
+\begin{equation}
+         P_j = \int \text{d}^3x :{T^0}_j:
+\end{equation}
+\begin{align}
+      P_j  &= 
+        \int \text{d}^3x \int d\tilde{k} \int d\tilde{p} :
+            (i p^0) \left[-b(\vec{p})e^{-i p x} + a^{\dagger}(\vec{p})e^{i p x}\right]  
+            (i k_j) \left[-a(\vec{k})e^{-i k x} + b^{\dagger}(\vec{k})e^{i k x}\right]  \\
+       & \spacc +  (i k^0) \left[-a(\vec{k})e^{-i k x} + b^{\dagger}(\vec{k})e^{i k x}\right]
+        (i p_j) \left[-b(\vec{p})e^{-i p x} + a^{\dagger}(\vec{p})e^{i p x}\right]
+        :\\
+        &= -
+        \int \text{d}^3x \int d\tilde{k} \int d\tilde{p} :\\
+        &p^0 k_j \left[ b(\vec{p}) a(\vec{k}) e^{-i (k+p) x}  
+                      - b(\vec{p}) b^{\dagger}(\vec{k}) e^{i (k-p) x} 
+                      - a^\dagger(\vec{p}) a(\vec{k}) e^{-i(k-p) x}
+                      + a^\dagger(\vec{p}) b^\dagger(\vec{k}) e^{i(k+p) x}
+                      \right]\\
+         +& k^0 p_j \left[ a(\vec{k}) b(\vec{p}) e^{-i (k+p) x} 
+                        - a(\vec{k}) a^{\dagger}(\vec{p}) e^{-i (k-p) x} 
+                        - b^\dagger(\vec{k}) b(\vec{p}) e^{i(k-p) x}
+                      + b^\dagger(\vec{k}) a^\dagger(\vec{p}) e^{i(k+p) x}
+                   \right]:
+\end{align}
+
+Now use the Fourier transformation
+
+\begin{equation}
+    \int d^3 x e^{\pm i(k + p )x} = (2 \pi)^{3} e^{ \pm i \omega_k t}\delta(\vec{k} + \vec{p})
+\end{equation}
+and $ \omega_k =  \omega_p := \omega$ if $\vec{k}^2 = \vec{p}^2$. 
+\begin{align}
+    P_j = -(2\pi)^3 \int d\tilde{k} \int d\tilde{p} :
+        &\omega k_j \left\{  \left[ b(\vec{p}) a(\vec{k}) e^{-i 2\omega t}  + a^\dagger(\vec{p}) b^\dagger(\vec{k}) e^{i2\omega t} \right]  \delta(\vec{k}+ \vec{p})
+                        - \left[ b(\vec{p}) b^{\dagger}(\vec{k}) + a^\dagger(\vec{p}) a(\vec{k})\right]  \delta(\vec{k}- \vec{p}) 
+                        %- a^\dagger(\vec{p}) a(\vec{k})  \delta(\vec{k}- \vec{p})
+                      %+ a^\dagger(\vec{p}) b^\dagger(\vec{k}) e^{i2\omega t} \delta(\vec{k}+ \vec{p})
+                    \right\}\\
+       +& \omega p_j \left\{ \left[ a(\vec{k}) b(\vec{p}) e^{-i 2\omega t} + b^\dagger(\vec{k}) a^\dagger(\vec{p}) e^{i2\omega t}   \right] \delta(\vec{k}+ \vec{p}) 
+                        - \left[ a(\vec{k}) a^{\dagger}(\vec{p}) +b^\dagger(\vec{k}) b(\vec{p}) \right] \delta(\vec{k}- \vec{p}) 
+                        %- b^\dagger(\vec{k}) b(\vec{p})  \delta(\vec{k}- \vec{p})
+                      %+ b^\dagger(\vec{k}) a^\dagger(\vec{p}) e^{i2\omega t} \delta(\vec{k}+ \vec{p})
+                   \right\}: 
+   \end{align}
+Evaluate $\int d\tilde{p}= \int \frac{d^3 p}{(2\pi)^3 2 \omega}$ and utilize that $\left[a,b\right] = \left[a, b^\dagger \right] = 0$.
+
+
+\begin{align}
+    P_j = -(2\pi)^3 \int d\tilde{k} :
+        \omega k_j \left\{  \cancel{\left[ b(-\vec{k}) a(\vec{k}) e^{-i 2\omega t}  + a^\dagger(-\vec{k}) b^\dagger(\vec{k}) e^{i2\omega t} \right]}
+                        \right.&-  \left[ b(\vec{k}) b^{\dagger}(\vec{k}) + a^\dagger(\vec{k}) a(\vec{k})\right]  \\
+        - \cancel{\left[ a(\vec{k}) b(-\vec{k}) e^{-i 2\omega t} + b^\dagger(\vec{k}) a^\dagger(-\vec{k}) e^{i2\omega t} \right]} &\left.+  \left[ a(\vec{k}) a^{\dagger}(\vec{k}) +b^\dagger(\vec{k}) b(\vec{k}) \right]   \right\}: 
+   \end{align}
+
+
+
+Lastly we make use of the normal order.
+\begin{align}
+    P_j &=  \int d\tilde{k} \frac{k_j}{2}: \left[ a^\dagger(\vec{k}) a(\vec{k})  + a(\vec{k}) a^{\dagger}(\vec{k}) + b(\vec{k}) b^{\dagger}(\vec{k})  + b^\dagger(\vec{k}) b(\vec{k}) 
+                \right] :\\
+        &=  \int d\tilde{k} k_j \left[ a^\dagger(\vec{k}) a(\vec{k})  + b^\dagger(\vec{k}) b(\vec{k}) 
+                \right] \label{res1}
+\end{align}
+
+
+\subsection*{Time component}
+
+Recall that
+\begin{align} 
+ {T^0}_0 &= \Pi \left( \partial_{0}\phi \right)  + \Pi \left( \partial_{0}\phi^\dagger \right) - \mathcal{L} \\ &= \Pi \left( \partial_{0}\phi \right)  + \Pi \left( \partial_{0}\phi^\dagger \right) - (\partial_{\mu}\phi^{\dagger})(\partial^{\mu}\phi) + m^{2}\phi^{\dagger}\phi \\
+ &= \Pi \left( \partial_{0}\phi \right) + \left( \partial_{j}\phi^\dagger \right)\left( \partial^{j}\phi \right) + m^{2}\phi^{\dagger}\phi 
+\end{align}
+and 
+\begin{equation}
+    H = P_0 = \int \text{d}^3x :{T^0}_0:.
+\end{equation}
+
+\newpage
+It is happening. Again...
+
+\begin{align}
+    P_0 = \int \text{d}^3x \int d\tilde{k} \int d\tilde{p} :
+    i p^0 &\left[-b(\vec{p})e^{-i p x} + a^{\dagger}(\vec{p})e^{i p x}\right] %Pi
+    (i k_0) \left[-a(\vec{k})e^{-i k x} + b^{\dagger}(\vec{k})e^{i k x}\right]\\ %dphi
+    -i p^j &\left[-b(\vec{p})e^{-i p x} + a^{\dagger}(\vec{p})e^{i p x}\right]
+    (-i k^j) \left[-a(\vec{k})e^{-i k x} + b^{\dagger}(\vec{k})e^{i k x}\right] \\
+    + m^2 &\left[b(\vec{p})e^{-i p x}+a^{\dagger}(\vec{p})e^{i p x}\right]
+    \left[a(\vec{k})e^{-i k x}+b^{\dagger}(\vec{k})e^{i k x}\right]
+    :\\
+    = \int \text{d}^3x \int d\tilde{k} \int d\tilde{p} :
+     -p^0 k_0 &\left[ b(\vec{p})a(\vec{k}) e^{-i (k+p) x} -   b(\vec{p})b^\dagger(\vec{k}) e^{i (k-p) x}
+    - a^\dagger(\vec{p})a(\vec{k}) e^{-i (k-p) x} + a^\dagger(\vec{p}) b^\dagger(\vec{k}) e^{i (k+p) x} \right]\\
+     -p^j k_j &\left[ b(\vec{p})a(\vec{k}) e^{-i (k+p) x} -   b(\vec{p})b^\dagger(\vec{k}) e^{i (k-p) x}
+    - a^\dagger(\vec{p})a(\vec{k}) e^{-i (k-p) x} + a^\dagger(\vec{p}) b^\dagger(\vec{k}) e^{i (k+p) x} \right]\\
+    + m^2 &\left[ b(\vec{p}) a(\vec{k})e^{-i (+p) x} + b(\vec{p}) b^{\dagger}(\vec{k})e^{i (k-p) x} +
+    a^{\dagger}(\vec{p}) a(\vec{k})e^{-i (k-p) x} + a^{\dagger}(\vec{p})  b^{\dagger}(\vec{k})e^{i (k+p) x}  \right] 
+    :
+\end{align}
+
+We again use the Fourier transformation. For this case we can utilze that $\omega ^2 =  k_0k^0 = m^2 + \vec{k}^2$ to cancel the mixed operator brackets.
+
+
+\begin{align}
+    P_0 =   (2 \pi)^3 \int d\tilde{k} \int d\tilde{p}:  
+     -p^0 k_0 & \left\{ \left[ b(\vec{p})a(\vec{k}) e^{-i 2\omega t} + a^\dagger(\vec{p}) b^\dagger(\vec{k}) e^{i 2\omega t} \right] \delta(\vec{k} + \vec{p}) 
+     -  \left[ b(\vec{p})b^\dagger(\vec{k})  + a^\dagger(\vec{p})a(\vec{k}) \right] \delta(\vec{k} - \vec{p}) \right\}  \\
+     - p^j k_j & \left\{ \left[ b(\vec{p})a(\vec{k}) e^{-i 2\omega t} + a^\dagger(\vec{p}) b^\dagger(\vec{k}) e^{i 2\omega t} \right]  \delta(\vec{k} + \vec{p})
+     - \left[  b(\vec{p})b^\dagger(\vec{k}) + a^\dagger(\vec{p})a(\vec{k})  \right] \delta(\vec{k} - \vec{p})  \right\} \\
+    + m^2 & \left\{ \left[ b(\vec{p}) a(\vec{k}) e^{-i 2\omega t} + a^{\dagger}(\vec{p})  b^{\dagger}(\vec{k}) e^{i 2\omega t} \right] \delta(\vec{k} + \vec{p}) 
+    +  \left[ b(\vec{p}) b^{\dagger}(\vec{k})  + a^{\dagger}(\vec{p}) a(\vec{k})  \right]\delta(\vec{k} - \vec{p})  \right\} 
+    :\\%%%%%
+    =   \frac{1}{2\omega} \int d\tilde{k}:
+     -p^0 k_0 & \left\{ \left[ b(-\vec{k})a(\vec{k}) e^{-i 2\omega t} + a^\dagger(-\vec{k}) b^\dagger(\vec{k}) e^{i 2\omega t} \right] 
+                     -  \left[ b(\vec{k})b^\dagger(\vec{k})  + a^\dagger(\vec{k})a(\vec{k}) \right] \right\} \\
+     + k^j k_j & \left\{ \left[ b(-\vec{k})a(\vec{k}) e^{-i 2\omega t} - a^\dagger(-\vec{k}) b^\dagger(\vec{k}) e^{i 2\omega t} \right]  
+     + \left[  b(\vec{p})b^\dagger(\vec{k}) + a^\dagger(\vec{p})a(\vec{k})  \right]  \right\} \\
+    + m^2 & \left\{ \left[ b(-\vec{k}) a(\vec{k}) e^{-i 2\omega t} + a^{\dagger}(-\vec{k})  b^{\dagger}(\vec{k}) e^{i 2\omega t} \right]
+    +  \left[ b(\vec{k}) b^{\dagger}(\vec{k})  + a^{\dagger}(\vec{k}) a(\vec{k})  \right] \right\} 
+    :
+\end{align}
+
+\begin{align}
+    P_0 = \int d\tilde{k}:  
+     \frac{\omega}{2}  \left\{ - \cancel{\left[ b(-\vec{k})a(\vec{k}) e^{-i 2\omega t} - a^\dagger(-\vec{k}) b^\dagger(\vec{k}) e^{i 2\omega t} \right]}
+                       \right. &+  \left[ b(\vec{k})b^\dagger(\vec{k})  + a^\dagger(\vec{k})a(\vec{k}) \right]  \\
+     +  \cancel{\left[ b(-\vec{k})a(\vec{k}) e^{-i 2\omega t} + a^\dagger(-\vec{k}) b^\dagger(\vec{k}) e^{i 2\omega t} \right]}
+     &+ \left. \left[  b(\vec{p})b^\dagger(\vec{k}) + a^\dagger(\vec{p})a(\vec{k})  \right]  \right\}:
+\end{align}
+This yields
+\begin{equation}
+    P_0=  \int d\tilde{k} \,  k_0\left[ 
+    +  a^\dagger(\vec{k})a(\vec{k}) +   b^\dagger(\vec{k})b(\vec{k}) 
+    \right]. \label{res2}
+\end{equation}
+
+\subsection*{Combined}
+Finally, if we combine equations \ref{res1} and \ref{res2} we get
+the expression
+\begin{equation}
+    P_\mu=  \int d\tilde{k} \,  k_\mu \left[ 
+      a^\dagger(\vec{k})a(\vec{k}) +   b^\dagger(\vec{k})b(\vec{k}) 
+    \right] .
+\end{equation}
+
