@@ -1,0 +1,75 @@
+\section*{Exercise 1}
+
+\greenbox{Dirac field momentum and charge}{
+    The solution of the Dirac equation can be expanded in the plane waves as follows 
+    
+$$
+\psi(x)=\int\mathrm{d}{\tilde{k}}\sum_{\lambda=\pm}\left[a_{\lambda}(k)u(k,\lambda)e^{-i k\cdot x}+b_{\lambda}^{\dagger}(k)v(k,\lambda)e^{i k\cdot x}\right],\quad\mathrm{with}\quad\mathrm{d}{\tilde{k}}=\frac{\mathrm{d}^{3}{\tilde{k}}}{(2\pi)^{3}2\omega_{k}} 
+$$
+Therein $u(k,\lambda)$ and $v(k,\lambda)$ are Dirac spinors associated with positive and negative energy solutions, respectivly. They obey the relations
+
+\begin{align} \label{eq:relations}
+    u^{\dagger}(k,\lambda)u(k,\lambda^{\prime})&=v^{\dagger}(k,\lambda)v(k,\lambda^{\prime})=2\omega_{k}\delta_{\lambda\lambda^{\prime}},\\
+    u^{\dagger}(\bar{k},\lambda)v(k,\lambda^{\prime})&=v^{\dagger}(\bar{k},\lambda)u(k,\lambda^{\prime})=0,
+\end{align}
+
+
+where $\Vec{k} = (\omega_k, - \Vec{k})^T$. At this stage, we leave open whether the $a^{(\dagger)}(k)$ and $b^{(\dagger)}(k)$ follow commutation or anti-commutation relations.
+}
+
+We start by showing $T^{0\mu} = \psi^\dagger i \partial^\mu \psi$
+
+\begin{equation}
+    T^{\mu\nu}= \frac{\partial \mathcal{L}}{\partial (\partial_\mu \psi)} (\partial^\nu \psi ) + \frac{\partial \mathcal{L}}{\partial (\partial_\mu \overline{\psi})} (\partial^\nu \overline{\psi} ) - g^{\mu \nu} \mathcal{L}
+\end{equation}
+for the Dirac-spinor Lagrangian $\mathcal{L} = \overline{\psi} (i \gamma^\alpha \partial_\alpha - m ) \psi$.
+
+\begin{align}
+T^{0\mu} &= \frac{\partial \mathcal{L}}{\partial (\partial_0 \psi)} (\partial^\mu \psi ) + \frac{\partial \mathcal{L}}{\partial (\partial_0 \overline{\psi})} (\partial^\mu \overline{\psi} ) - g^{0 \mu} \mathcal{L}\\
+    &= i \overline{\psi} \gamma^0 (\partial^\mu \psi ) + 0 - g^{0\mu} \overline{\psi} \left[ \text{Dirac-Eq.} \right] \\
+    &= i \psi^\dagger  \gamma^0 \gamma^0 \partial^\mu \psi \\
+    &= i \psi^\dagger\partial^\mu \psi 
+\end{align}
+
+For the momentum operator, we integrate
+
+\begin{align}
+    P^\mu = \int d^3 x T^{0\mu} 
+    =\int d^3x \int d \Tilde{k} \int d \Tilde{p} \sum_{\lambda = \pm} \sum_{\kappa = \pm}
+    &\left[
+    a^\dagger_\lambda(k) u^\dagger(k, \lambda) a_\kappa(p) u(p, \kappa) \cdot e^{i(k-p)x} \right.\\
+   &-a^\dagger_\lambda(k) u^\dagger(k, \lambda) b^\dagger_\kappa(p) v(p, \kappa) \cdot e^{i(k+p)x} \\
+   &+b_\lambda(k) v^\dagger(k, \lambda) a_\kappa(p) u(p, \kappa) \cdot e^{-i(k+p)x}\\
+   &\left. -b_\lambda(k) v^\dagger(k, \lambda) b^\dagger_\kappa(p) v(p, \kappa) \cdot e^{-i(k-p)x}
+        \right]
+\end{align}
+
+Using the Fourier-Transformation again:
+\begin{align}
+        P^\mu = \int d^3x  \int d \Tilde{p} \sum_{\lambda = \pm} \sum_{\kappa = \pm}
+    &\left[
+    a^\dagger_\lambda({p}) u^\dagger({p}, \lambda) a_\kappa(p) u(p, \kappa)  \right.\\
+   &-a^\dagger_\lambda(\overline{p}) u^\dagger(\overline{p}, \lambda) b^\dagger_\kappa(p) v(p, \kappa) e^{+i2\omega t}  \\
+   &+b_\lambda(\overline{p}) v^\dagger(\overline{p}, \lambda) a_\kappa(p) u(p, \kappa) e^{-i2\omega t}\\
+   &\left. -b_\lambda(p) v^\dagger(p, \lambda) b^\dagger_\kappa(p) v(p, \kappa) 
+        \right]
+\end{align}
+
+Relations \ref{eq:relations} cancel two lines and adds a $\delta_{\lambda \kappa}$ and thus
+\begin{equation}
+    P^\mu = \int d \Tilde{k} \sum_{\lambda = \pm} k_\mu \left[ a^\dagger_\lambda(k)  a_\lambda(k) - b_\lambda(k)  b^\dagger_\lambda(k) \right].
+\end{equation}
+
+A similar calculation can be performed for 
+\begin{equation}
+    Q = \int d^3 x \,\overline{\psi}(x) \gamma^0 \psi(x) = \int d^3 x \, \psi^\dagger(x) \psi(x).
+\end{equation}
+Without the derivative we get 
+\begin{equation}
+        Qu = \int d \Tilde{k} \sum_{\lambda = \pm} k_\mu \left[ a^\dagger_\lambda(k)  a_\lambda(k) + b_\lambda(k)  b^\dagger_\lambda(k) \right].
+\end{equation}
+
+Both these cases make clear why an anti-commutation is needed for the normal order
+\begin{equation}
+    :\left[  b_\lambda(k)  b^\dagger_\lambda(k) \right]: = - b^\dagger_\lambda(k) b_\lambda(k).
+\end{equation}
